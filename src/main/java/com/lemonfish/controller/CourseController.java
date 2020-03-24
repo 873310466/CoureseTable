@@ -21,8 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.lemonfish.util.CourstTable.clearBothBrackets;
-import static com.lemonfish.util.CourstTable.getDay;
 
 /**
  * 相关Controller
