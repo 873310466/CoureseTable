@@ -24,3 +24,21 @@ ALTER TABLE `course` MODIFY COLUMN `day` bigint NOT NULL COMMENT '课程星期�
 ALTER TABLE `course` ADD COLUMN `begin` bigint NOT NULL COMMENT '课程开始节数' AFTER `day`;
 -- 2020-03-24 19:31:38 by Lemonfish
 ALTER TABLE `course` MODIFY COLUMN `row_span` bigint NOT NULL COMMENT '课程共几节' AFTER `begin`;
+-- 2020-03-25 01:39:30 by Lemonfish
+CREATE TABLE `week`( `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID',`is_deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT '删除标记',`create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',PRIMARY KEY (`id`))AUTO_INCREMENT=10000002 DEFAULT CHARSET=utf8mb4 COMMENT '教学周';
+-- 2020-03-25 01:40:34 by Lemonfish
+ALTER TABLE `week` ADD COLUMN `cweek` bigint COMMENT '教学周' AFTER `id`;
+-- 2020-03-25 01:40:35 by Lemonfish
+ALTER TABLE `week` MODIFY COLUMN `is_deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT '删除标记' AFTER `cweek`;
+-- 2020-04-01 21:52:29 by Lemonfish
+CREATE TABLE `stars`( `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID',`is_deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT '删除标记',`create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',PRIMARY KEY (`id`))AUTO_INCREMENT=10000002 DEFAULT CHARSET=utf8mb4 COMMENT '星星';
+-- 2020-04-01 21:52:55 by Lemonfish
+ALTER TABLE `stars` ADD COLUMN `counts` bigint COMMENT '星星数量' AFTER `id`;
+-- 2020-04-01 21:52:55 by Lemonfish
+ALTER TABLE `stars` MODIFY COLUMN `is_deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT '删除标记' AFTER `counts`;
+-- 2020-04-01 22:08:24 by Lemonfish
+CREATE TABLE `stars`( `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID',`is_deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT '删除标记',`create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',PRIMARY KEY (`id`))AUTO_INCREMENT=10000002 DEFAULT CHARSET=utf8mb4 COMMENT '星星';
+-- 2020-04-01 22:08:42 by Lemonfish
+ALTER TABLE `stars` ADD COLUMN `counts` bigint COMMENT '星星数量' AFTER `id`;
+-- 2020-04-01 22:08:42 by Lemonfish
+ALTER TABLE `stars` MODIFY COLUMN `is_deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT '删除标记' AFTER `counts`;

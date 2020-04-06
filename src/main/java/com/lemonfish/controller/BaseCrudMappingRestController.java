@@ -14,7 +14,7 @@ import java.io.Serializable;
 * 通用CRUD通用父类RestController，子类继承即可拥有CRUD接口（禁止只读接口Controller继承）
 * @author Lemonfish
 * @version 1.0
-* @date 2020-03-24
+* @date 2020-03-25
 * Copyright © Chao Zhang
 */
 @Slf4j
