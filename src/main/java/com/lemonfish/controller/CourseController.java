@@ -34,22 +34,7 @@ public class CourseController {
 
     @GetMapping("/table/{week}")
     public MyJsonResult getPerWeekData(@PathVariable("week") long week) {
-        // 课程表是一个二维的
-        List<List<Course>> res = new ArrayList<>();
-
-        LambdaQueryWrapper<Course> lqw = new LambdaQueryWrapper<>();
-        lqw.eq(Course::getWeek, week);
-        // 获取周数为`week`的课程数据
-        List<Course> entityList = courseService.getEntityList(lqw);
-
-        for (long i = 1; i < 13; i++) {
-            long begin = i;
-            List<Course> coursesPerDay = entityList.stream().filter(item -> item.getBegin() == begin).collect(Collectors.toList());
-            coursesPerDay.forEach(System.out::println);
-            res.add(coursesPerDay);
-        }
-        return res.size() > 0 ? MyJsonResult.success(res) : MyJsonResult.fail(CodeEnum.FAIL_NOT_FOUND);
+        return courseService.getWeekList(week);
     }
-
 
 }

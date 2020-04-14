@@ -1,7 +1,8 @@
 package com.lemonfish;
-import	java.util.ArrayList;
+
+import java.util.ArrayList;
 import java.util.Set;
-import	java.util.stream.Collectors;
+import java.util.stream.Collectors;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.lemonfish.pojo.entity.Course;
@@ -23,8 +24,6 @@ class DemoApplicationTests {
     @Autowired
     RedisUtil redisUtil;
     @Autowired
-    RedisTemplate<String,Object> redisTemplate;
-    @Autowired
     MailUtil mailUtil;
 
 
@@ -35,13 +34,11 @@ class DemoApplicationTests {
         LambdaQueryWrapper<Course> lqw = new LambdaQueryWrapper<>();
         lqw.eq(Course::getWeek, 1);
         List<Course> entityList = courseService.getEntityList(lqw);
-        for (long i = 1; i < 13; i++) {
-            long day = i;
-            List<Course> coursesPerDay = entityList.stream().filter(item -> item.getBegin() == day).collect(Collectors.toList());
-            if (coursesPerDay.size()>0) {
-                coursesPerDay.forEach(System.out::println);
+        for (long i = 1; i < 7; i++) {
+            long begin = (i << 1) - 1;
+            List<Course> coursesPerDay = entityList.stream().filter(item -> item.getBegin() == begin).collect(Collectors.toList());
+            if (coursesPerDay.size() > 0) {
                 res.add(coursesPerDay);
-                System.out.println("-------------------");
             }
         }
 
@@ -50,14 +47,7 @@ class DemoApplicationTests {
 
     @Test
     void test01() {
-//        Object stars = redisUtil.get("stars");
-//        System.out.println(stars);
 
 
-//        long stars1 = redisUtil.incr("stars", 1);
-//        System.out.println(stars1);
-        Set<String> keys = redisUtil.keys();
-        Object mailSum = redisUtil.get("mailSum");
-        System.out.println(mailSum);
     }
 }

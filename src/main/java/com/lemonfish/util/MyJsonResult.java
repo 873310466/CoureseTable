@@ -30,6 +30,12 @@ public class MyJsonResult implements Serializable {
     private Object data;
 
     /**
+     * 返回额外信息
+     */
+    private String additionalMsg;
+
+
+    /**
      * 默认成功，无返回数据
      */
     public MyJsonResult() {
@@ -37,17 +43,27 @@ public class MyJsonResult implements Serializable {
 
 
     public static MyJsonResult success(Object data) {
+        return MyJsonResult.success(data, null);
+    }
+
+    public static MyJsonResult success(Object data,String additionalMsg) {
         MyJsonResult res = new MyJsonResult();
         res.setCode(CodeEnum.OK.getCode());
         res.setLabel(CodeEnum.OK.getLabel());
         res.setData(data);
+        res.setAdditionalMsg(additionalMsg);
         return res;
     }
 
     public static MyJsonResult fail(CodeEnum codeEnum) {
+        return MyJsonResult.fail(codeEnum, null);
+
+    }
+    public static MyJsonResult fail(CodeEnum codeEnum,String additionalMsg) {
         MyJsonResult res = new MyJsonResult();
         res.code = codeEnum.getCode();
         res.label = codeEnum.getLabel();
+        res.setAdditionalMsg(additionalMsg);
         return res;
     }
 

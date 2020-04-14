@@ -1,12 +1,12 @@
 spring:
   datasource:
-    username: xxxxx
-    password: xxxxxx
-    url: your url
+    username: xxx
+    password: xxx
+    url: xxx
     driver-class-name: com.mysql.cj.jdbc.Driver
   mail:
-    username: yourmail
-    password: yourpassword
+    username: xxx
+    password: xxx
     host: smtp.qq.com
     # 开启加密验证
     properties:
@@ -15,8 +15,8 @@ spring:
           ssl:
             enable: true
   redis:
-    host: yourhost
-    port: 0000000
+    host: xxx
+    port: 6379
 
 server:
   port: 9000
